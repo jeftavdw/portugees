@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugees leren — Familie Van der Woerd</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;color:#1a1a18;min-height:100vh}
+header{background:#fff;border-bottom:1px solid #e5e4e0;padding:14px 20px;position:sticky;top:0;z-index:10}
+header h1{font-size:17px;font-weight:600}
+header p{font-size:12px;color:#888;margin-top:1px}
+.nav-wrap{background:#fff;border-bottom:1px solid #e5e4e0;padding:0 16px;overflow-x:auto;white-space:nowrap;position:sticky;top:53px;z-index:9}
+.nav-wrap::-webkit-scrollbar{height:3px}.nav-wrap::-webkit-scrollbar-thumb{background:#ddd}
+.nav{display:inline-flex}
+.nav button{padding:12px 15px;font-size:14px;border:none;background:transparent;color:#888;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.nav button.active{color:#2563eb;border-bottom-color:#2563eb;font-weight:500}
+.nav button:hover:not(.active){color:#444}
+.main{max-width:700px;margin:0 auto;padding:16px}
+.section{display:none}.section.active{display:block}
+.card{background:#fff;border-radius:12px;border:1px solid #e5e4e0;padding:16px;margin-bottom:12px}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.07em;color:#aaa;text-transform:uppercase;margin-bottom:12px}
+.sub{font-size:13px;font-weight:500;color:#666;margin:14px 0 8px;padding-top:14px;border-top:1px solid #f0efe8}
+.sub:first-child{border-top:none;margin-top:0;padding-top:0}
+.tip{font-size:12px;color:#aaa;margin-bottom:10px}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.fc{background:#f8f7f3;border:1px solid #e5e4e0;border-radius:10px;padding:12px;cursor:pointer;text-align:center;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:all .15s;-webkit-tap-highlight-color:transparent;user-select:none}
+.fc:active{transform:scale(.97)}
+.fc .pt{font-size:14px;font-weight:500;color:#1a1a18}
+.fc .nl{font-size:12px;color:#2563eb;display:none;margin-top:2px}
+.fc.rev{border-color:#93b4f7;background:#eff4ff}.fc.rev .nl{display:block}
+.practice-card{background:#f8f7f3;border:1px solid #e5e4e0;border-radius:14px;padding:2rem;text-align:center;margin-bottom:16px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.practice-card .vraag{font-size:13px;color:#aaa}
+.practice-card .woord{font-size:26px;font-weight:600;color:#1a1a18}
+.practice-card .antwoord{font-size:18px;color:#2563eb;display:none;margin-top:8px}
+.practice-card.revealed .antwoord{display:block}
+.practice-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.btn-wist{padding:13px;border-radius:10px;font-size:15px;font-weight:500;border:none;cursor:pointer}
+.btn-wist.yes{background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7}
+.btn-wist.no{background:#fef2f2;color:#991b1b;border:1px solid #fca5a5}
+.reveal-btn{display:block;width:100%;padding:12px;border-radius:10px;background:#f0f0ee;color:#444;font-size:15px;font-weight:500;border:1px solid #e5e4e0;cursor:pointer;margin-bottom:12px}
+.practice-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#aaa;margin-bottom:12px}
+.bar{height:4px;background:#e5e4e0;border-radius:2px;margin-bottom:16px;overflow:hidden}
+.bar-fill{height:100%;background:#2563eb;border-radius:2px;transition:width .3s}
+.end-card{text-align:center;padding:1.5rem 0}
+.score-big{font-size:52px;font-weight:700;color:#2563eb}
+.score-label{font-size:15px;color:#888;margin-top:4px;margin-bottom:20px}
+.sub-scores{display:flex;justify-content:center;gap:24px;margin:12px 0 20px}
+.zin{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 12px;background:#f8f7f3;border-radius:8px;border:1px solid #e5e4e0;margin-bottom:6px;gap:12px}
+.zin .pt{font-size:14px;color:#1a1a18;flex:1}
+.zin .nl{font-size:13px;color:#666;text-align:right;flex:1}
+.verb-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.vrow{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f8f7f3;border-radius:8px;border:1px solid #e5e4e0}
+.vrow .pr{color:#888;font-size:13px;display:flex;flex-direction:column}
+.vrow .pr-nl{font-size:11px;color:#bbb}
+.vrow .cj{font-size:15px;font-weight:500;color:#1a1a18}
+.verb-note{font-size:12px;color:#aaa;margin-top:8px}
+.num-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-bottom:12px}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 10px;background:#f8f7f3;border-radius:8px;border:1px solid #e5e4e0}
+.ni .n{font-size:12px;font-weight:500;color:#aaa;min-width:32px}
+.ni .w{font-size:13px;color:#1a1a18}
+.pill{display:inline-block;padding:3px 9px;border-radius:6px;background:#f8f7f3;border:1px solid #e5e4e0;font-size:12px;color:#666;margin:2px}
+.wb-search{width:100%;padding:10px 14px;border-radius:10px;border:1px solid #e5e4e0;font-size:15px;background:#f8f7f3;color:#1a1a18;outline:none;margin-bottom:12px;display:block}
+.wb-search:focus{border-color:#93b4f7;background:#fff}
+.wb-table{width:100%;border-collapse:collapse}
+.wb-table tr{border-bottom:1px solid #f0efe8}
+.wb-table tr:last-child{border-bottom:none}
+.wb-table td{padding:9px 4px;font-size:14px}
+.wb-table td:first-child{font-weight:500;color:#1a1a18;width:50%}
+.wb-table td:last-child{color:#666}
+.wb-cat{font-size:11px;font-weight:600;letter-spacing:.07em;color:#aaa;text-transform:uppercase;padding:10px 4px 4px;display:block}
+.q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.q-meta span{font-size:13px;color:#aaa}
+.q-meta button{font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid #e5e4e0;background:#f8f7f3;color:#666;cursor:pointer}
+.q-cat{font-size:11px;color:#aaa;text-align:center;margin-bottom:8px}
+.q-q{font-size:17px;font-weight:500;text-align:center;margin:16px 0;line-height:1.4}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.q-opts button{padding:12px 8px;border-radius:10px;font-size:14px;border:1px solid #e5e4e0;background:#f8f7f3;color:#1a1a18;cursor:pointer;transition:all .15s;line-height:1.3}
+.q-opts button:hover:not(:disabled){border-color:#93b4f7;background:#eff4ff}
+.q-opts button.ok{background:#ecfdf5;border-color:#6ee7b7;color:#065f46}
+.q-opts button.no{background:#fef2f2;border-color:#fca5a5;color:#991b1b}
+.q-fb{text-align:center;font-size:14px;color:#666;min-height:22px}
+.next-btn{display:block;width:100%;padding:11px;border-radius:10px;background:#2563eb;color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer;margin-top:12px}
+.next-btn:hover{background:#1d4ed8}
+.nieuw-btn{display:inline-block;padding:12px 28px;border-radius:10px;background:#2563eb;color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer}
+.type-input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e5e4e0;font-size:17px;background:#f8f7f3;color:#1a1a18;outline:none;margin-bottom:10px;text-align:center;display:block}
+.type-input:focus{border-color:#93b4f7;background:#fff}
+.type-input.ok{border-color:#6ee7b7;background:#ecfdf5;color:#065f46}
+.type-input.no{border-color:#fca5a5;background:#fef2f2;color:#991b1b}
+.check-btn{display:block;width:100%;padding:11px;border-radius:10px;background:#1a1a18;color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer;margin-bottom:10px}
+.check-btn:hover{background:#333}
+.check-btn:disabled{background:#ccc;cursor:default}
+.type-hint{font-size:12px;color:#aaa;text-align:center;margin-bottom:8px}
+/* Kleur swatches */
+.kleur-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.kleur-item{border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:3px;border:1px solid rgba(0,0,0,0.08)}
+.kleur-item .pt{font-size:14px;font-weight:500;color:#1a1a18}
+.kleur-item .nl{font-size:12px;color:#555}
+/* Rekenen */
+.reken-card{background:#f8f7f3;border:1px solid #e5e4e0;border-radius:14px;padding:2rem;text-align:center;margin-bottom:16px}
+.reken-som{font-size:32px;font-weight:700;color:#1a1a18;margin:16px 0}
+.reken-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.reken-opts button{padding:14px 8px;border-radius:10px;font-size:20px;font-weight:600;border:1px solid #e5e4e0;background:#f8f7f3;color:#1a1a18;cursor:pointer;transition:all .15s}
+.reken-opts button:hover:not(:disabled){border-color:#93b4f7;background:#eff4ff}
+.reken-opts button.ok{background:#ecfdf5;border-color:#6ee7b7;color:#065f46}
+.reken-opts button.no{background:#fef2f2;border-color:#fca5a5;color:#991b1b}
+/* fruit tabel */
+.fruit-table{width:100%;border-collapse:collapse}
+.fruit-table tr{border-bottom:1px solid #f0efe8}
+.fruit-table tr:last-child{border-bottom:none}
+.fruit-table td{padding:8px 4px;font-size:14px}
+.fruit-table td:first-child{font-weight:500;color:#1a1a18;width:35%}
+.fruit-table td:nth-child(2){color:#666;width:35%}
+.fruit-table td:last-child{color:#aaa;font-size:12px}
+@media(max-width:500px){.verb-grid{grid-template-columns:1fr}.reken-opts{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🇵🇹 Portugees leren</h1>
+  <p>Familie Van der Woerd · lessen van Rosalinde</p>
+</header>
+<div class="nav-wrap">
+  <div class="nav">
+    <button class="active" onclick="show('woordenboek',this)">Woordenboek</button>
+    <button onclick="show('woorden',this)">Woorden</button>
+    <button onclick="show('verbos',this)">Verbos</button>
+    <button onclick="show('zinnen',this)">Zinnen</button>
+    <button onclick="show('kleuren',this)">Kleuren</button>
+    <button onclick="show('animais',this)">Dieren</button>
+    <button onclick="show('frutas',this)">Fruit</button>
+    <button onclick="show('uitspraak',this)">Uitspraak</button>
+    <button onclick="show('nummers',this)">Nummers</button>
+    <button onclick="show('maanden',this)">Maanden</button>
+    <button onclick="show('flashoef',this)">Flashcards</button>
+    <button onclick="show('quiz',this)">Quiz</button>
+    <button onclick="show('intypen',this)">Intypen</button>
+    <button onclick="show('rekenen',this)">Rekenen 🔢</button>
+  </div>
+</div>
+<div class="main">
+
+<!-- WOORDENBOEK -->
+<div id="woordenboek" class="section active">
+  <div class="card">
+    <input class="wb-search" type="search" id="wb-search" placeholder="Zoek op Portugees of Nederlands..." oninput="filterWb()">
+    <div id="wb-content"></div>
+  </div>
+</div>
+
+<!-- WOORDEN -->
+<div id="woorden" class="section">
+  <div class="card"><div class="card-title">Palavras</div><p class="tip">Tik om te onthullen</p><div class="fc-grid" id="w-grid"></div></div>
+  <div class="card"><div class="card-title">Handige woorden</div><div class="fc-grid" id="hw-grid"></div></div>
+  <div class="card"><div class="card-title">Gostos — werkwoorden</div><div class="fc-grid" id="gv-grid"></div></div>
+  <div class="card"><div class="card-title">Sporten & spellen</div><div class="fc-grid" id="sport-grid"></div></div>
+  <div class="card"><div class="card-title">Eten</div><div class="fc-grid" id="et-grid"></div></div>
+  <div class="card"><div class="card-title">Drinken</div><div class="fc-grid" id="drink-grid"></div></div>
+  <div class="card"><div class="card-title">Richtingen</div><div class="fc-grid" id="ri-grid"></div></div>
+  <div class="card"><div class="card-title">Maanden</div><div class="fc-grid" id="mn-grid"></div></div>
+</div>
+
+<!-- VERBOS -->
+<div id="verbos" class="section"><div id="verb-content"></div></div>
+
+<!-- ZINNEN -->
+<div id="zinnen" class="section">
+  <div class="card">
+    <div class="card-title">Querer — willen (bestellen / vragen)</div>
+    <div id="querer-z"></div>
+    <div class="sub">Beleefd bestellen</div>
+    <div class="zin"><span class="pt">Eu quero esparguete bolonhesa, se faz favor.</span><span class="nl">Ik wil spaghetti bolognese, alstublieft.</span></div>
+    <div class="zin"><span class="pt">Eu quero uma água com gás, se faz favor.</span><span class="nl">Ik wil een bruiswater, alstublieft.</span></div>
+    <div class="zin"><span class="pt">Eu quero este / esta.</span><span class="nl">Ik wil deze (m/v).</span></div>
+    <div class="zin"><span class="pt">Eu gostava de beber água.</span><span class="nl">Ik zou graag water willen drinken.</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Gostos</div>
+    <div class="zin"><span class="pt">Eu gosto de ___ e ___.</span><span class="nl">Ik hou van ___ en ___.</span></div>
+    <div class="zin"><span class="pt">E tu, o que gostas?</span><span class="nl">En jij, wat vind jij leuk?</span></div>
+    <div class="zin"><span class="pt">Eu não gosto de queijo.</span><span class="nl">Ik hou niet van kaas.</span></div>
+    <div class="sub">Per werkwoord</div>
+    <div id="gostos-detail"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Beber — drinken</div>
+    <div id="beber-z"></div>
+    <div class="sub">Variaties</div>
+    <div id="beber-var"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Comer — eten</div>
+    <div id="comer-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Nadar — zwemmen</div>
+    <div id="nadar-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Fruit + kleur</div>
+    <div id="fruitkleur-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">à / às — naar de</div>
+    <div class="zin"><span class="pt">à</span><span class="nl">naar de (vrouwelijk enkelvoud)</span></div>
+    <div class="zin"><span class="pt">às</span><span class="nl">naar de (vrouwelijk meervoud)</span></div>
+    <div class="zin"><span class="pt">eu vou à casa</span><span class="nl">ik ga naar huis</span></div>
+    <div class="zin"><span class="pt">eu vou às casas</span><span class="nl">ik ga naar de huizen</span></div>
+    <div class="zin"><span class="pt">por dentro</span><span class="nl">van binnen</span></div>
+    <div class="zin"><span class="pt">por fora</span><span class="nl">van buiten</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Mais & menos</div>
+    <div class="zin"><span class="pt">mais</span><span class="nl">meer / plus</span></div>
+    <div class="zin"><span class="pt">menos</span><span class="nl">minder / min</span></div>
+    <div class="zin"><span class="pt">três menos um é dois</span><span class="nl">drie min één is twee</span></div>
+    <div class="zin"><span class="pt">metade</span><span class="nl">helft</span></div>
+    <div class="zin"><span class="pt">meio / meia</span><span class="nl">half</span></div>
+    <div class="zin"><span class="pt">eu quero meia maçã</span><span class="nl">ik wil een halve appel</span></div>
+    <div class="zin"><span class="pt">eu quero metade desta tábua</span><span class="nl">ik wil de helft van dit bord</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Casos — oefenzinnen</div>
+    <div id="casos-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Geboortedatum</div>
+    <div id="data-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Maanden — wat het weer doet</div>
+    <div id="maanden-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Richtingen — spel</div>
+    <p style="font-size:13px;color:#666;margin-bottom:10px">Één doet een beweging, anderen benoemen de richting. Of andersom!</p>
+    <div id="richt-z"></div>
+  </div>
+</div>
+
+<!-- KLEUREN -->
+<div id="animais" class="section">
+  <div class="card">
+    <div class="card-title">Animais — dieren</div>
+    <p class="tip">Tik om te onthullen</p>
+    <div class="fc-grid" id="animais-grid"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Animais + cores — zinnen</div>
+    <div id="animais-z"></div>
+  </div>
+</div>
+
+<div id="kleuren" class="section">
+  <div class="card">
+    <div class="card-title">Cores — kleuren</div>
+    <p class="tip">Tik om te onthullen</p>
+    <div class="fc-grid" id="kleur-grid"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Donker & licht</div>
+    <div class="zin"><span class="pt">escuro</span><span class="nl">donker</span></div>
+    <div class="zin"><span class="pt">claro</span><span class="nl">licht</span></div>
+    <div class="zin"><span class="pt">azul escuro</span><span class="nl">donkerblauw</span></div>
+    <div class="zin"><span class="pt">verde claro</span><span class="nl">lichtgroen</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Fruit + kleur — enkelvoud & meervoud</div>
+    <div id="fruitkleur2-z"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Por dentro / por fora</div>
+    <div id="portdentro-z"></div>
+  </div>
+</div>
+
+<!-- FRUIT -->
+<div id="frutas" class="section">
+  <div class="card">
+    <div class="card-title">Frutas — enkelvoud & meervoud</div>
+    <table class="fruit-table" id="fruit-table"></table>
+  </div>
+  <div class="card">
+    <div class="card-title">Zinnen</div>
+    <div class="zin"><span class="pt">A minha fruta preferida é...</span><span class="nl">Mijn lievelingsfruit is...</span></div>
+    <div class="zin"><span class="pt">As minhas frutas preferidas são... e...</span><span class="nl">Mijn lievelingsfruitsoorten zijn... en...</span></div>
+    <div class="zin"><span class="pt">Eu quero comer... e...</span><span class="nl">Ik wil... en... eten.</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Fruit als flashcard</div>
+    <p class="tip">Tik om te onthullen</p>
+    <div class="fc-grid" id="frutas-fc"></div>
+  </div>
+</div>
+
+<!-- UITSPRAAK -->
+<div id="uitspraak" class="section">
+  <div class="card"><div class="card-title">ão — nasale o-klank</div><div class="fc-grid" id="ao-grid"></div></div>
+  <div class="card"><div class="card-title">au — klinkt als "auw"</div><div class="fc-grid" id="au-grid"></div></div>
+  <div class="card"><div class="card-title">ou — klinkt als "oo"</div><div class="fc-grid" id="ou-grid"></div></div>
+  <div class="card"><div class="card-title">im / em / om / um — nasale klinkers</div><div class="fc-grid" id="nas-grid"></div></div>
+  <div class="card"><div class="card-title">ar / er / ir / or / ur</div><div id="cons-content"></div></div>
+</div>
+
+<!-- NUMMERS -->
+<div id="nummers" class="section"><div class="card"><div id="num-content"></div></div></div>
+
+<!-- MAANDEN -->
+<div id="maanden" class="section">
+  <div class="card"><div class="card-title">Meses — maanden</div><div class="fc-grid" id="mnd-fc"></div></div>
+  <div class="card">
+    <div class="card-title">Geboortedatum zeggen</div>
+    <div class="zin"><span class="pt">Eu nasci em [stad]</span><span class="nl">Ik ben geboren in [stad]</span></div>
+    <div class="zin"><span class="pt">Eu nasci no ano [jaar]</span><span class="nl">Ik ben geboren in het jaar [jaar]</span></div>
+  </div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flashoef" class="section">
+  <div class="card">
+    <div class="practice-meta">
+      <span id="fo-teller">1 / —</span>
+      <span><span style="color:#065f46">Goed: <strong id="fo-ok">0</strong></span> &nbsp; <span style="color:#991b1b">Gemist: <strong id="fo-no">0</strong></span></span>
+      <button onclick="startFlash()" style="font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid #e5e4e0;background:#f8f7f3;color:#666;cursor:pointer">Opnieuw</button>
+    </div>
+    <div class="bar"><div class="bar-fill" id="fo-fill" style="width:0%"></div></div>
+    <div id="fo-card" class="practice-card">
+      <span class="vraag">Wat betekent dit?</span>
+      <span class="woord" id="fo-woord">—</span>
+      <span class="antwoord" id="fo-antwoord"></span>
+    </div>
+    <button class="reveal-btn" id="fo-reveal" onclick="revealFlash()">Toon vertaling</button>
+    <div class="practice-btns" id="fo-btns" style="display:none">
+      <button class="btn-wist yes" onclick="beoordeelFlash(true)">Wist ik het</button>
+      <button class="btn-wist no" onclick="beoordeelFlash(false)">Wist ik het niet</button>
+    </div>
+    <div id="fo-end" class="end-card" style="display:none">
+      <div class="score-big" id="fo-pct">—</div>
+      <div class="score-label">van de woorden geweten</div>
+      <div class="sub-scores">
+        <span style="color:#065f46">Goed: <strong id="fo-end-ok">0</strong></span>
+        <span style="color:#991b1b">Gemist: <strong id="fo-end-no">0</strong></span>
+      </div>
+      <button class="nieuw-btn" onclick="startFlash()">Nieuwe ronde</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="section">
+  <div class="card">
+    <div id="quiz-game">
+      <div class="q-meta"><span>Vraag <strong id="qs-nr">1</strong> van 20</span><button onclick="resetQ()">Opnieuw</button></div>
+      <div class="bar"><div class="bar-fill" id="q-fill" style="width:0%"></div></div>
+      <div class="q-cat" id="q-cat"></div>
+      <div class="q-q" id="qq">Laden...</div>
+      <div class="q-opts" id="qo"></div>
+      <div class="q-fb" id="qf"></div>
+      <button class="next-btn" id="qn" onclick="nextQ()" style="display:none">Volgende</button>
+    </div>
+    <div id="quiz-end" class="end-card" style="display:none">
+      <div class="score-big" id="q-end-score"></div>
+      <div class="score-label" id="q-end-label"></div>
+      <button class="nieuw-btn" onclick="resetQ()">Nieuwe quiz van 20</button>
+    </div>
+  </div>
+</div>
+
+<!-- INTYPEN -->
+<div id="intypen" class="section">
+  <div class="card">
+    <div id="type-game">
+      <div class="q-meta"><span>Vraag <strong id="ts-nr">1</strong> van 20</span><button onclick="resetType()">Opnieuw</button></div>
+      <div class="bar"><div class="bar-fill" id="t-fill" style="width:0%"></div></div>
+      <div class="q-cat" id="t-cat"></div>
+      <div class="q-q" id="tq">Laden...</div>
+      <p class="type-hint">Typ het Portugese woord (accenten mag je weglaten)</p>
+      <input type="text" class="type-input" id="t-input" placeholder="Typ hier..." oninput="typeInput()" onkeydown="typeEnter(event)">
+      <button class="check-btn" id="t-check" onclick="checkType()" disabled>Controleer</button>
+      <div class="q-fb" id="tf"></div>
+      <button class="next-btn" id="tn" onclick="nextType()" style="display:none">Volgende</button>
+    </div>
+    <div id="type-end" class="end-card" style="display:none">
+      <div class="score-big" id="t-end-score"></div>
+      <div class="score-label" id="t-end-label"></div>
+      <button class="nieuw-btn" onclick="resetType()">Nieuwe quiz van 20</button>
+    </div>
+  </div>
+</div>
+
+<!-- REKENEN -->
+<div id="rekenen" class="section">
+  <div class="card">
+    <div class="card-title">Rekenen met mais (meer/+) en menos (minder/-)</div>
+    <div class="zin"><span class="pt">mais</span><span class="nl">plus / meer</span></div>
+    <div class="zin"><span class="pt">menos</span><span class="nl">min / minder</span></div>
+    <div class="zin"><span class="pt">é</span><span class="nl">is (=)</span></div>
+  </div>
+  <div class="card">
+    <div id="reken-game">
+      <div class="q-meta">
+        <span>Score: <strong id="rs">0</strong> / <strong id="rt">0</strong></span>
+        <button onclick="resetReken()">Opnieuw</button>
+      </div>
+      <div class="bar"><div class="bar-fill" id="r-fill" style="width:0%"></div></div>
+      <div class="reken-card">
+        <div style="font-size:13px;color:#aaa" id="r-pt-som"></div>
+        <div class="reken-som" id="r-som">—</div>
+        <div style="font-size:13px;color:#666">Wat is het antwoord?</div>
+      </div>
+      <div class="reken-opts" id="ro"></div>
+      <div class="q-fb" id="rf"></div>
+      <button class="next-btn" id="rn" onclick="nextReken()" style="display:none">Volgende</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const D = {
+woorden:[
+  {pt:'João',nl:'Jan',cat:'Namen'},
+  {pt:'rato',nl:'muis',cat:'Dieren'},{pt:'gato',nl:'kat',cat:'Dieren'},
+  {pt:'cão',nl:'hond',cat:'Dieren'},{pt:'tartaruga',nl:'schildpad',cat:'Dieren'},
+  {pt:'macaco',nl:'aap',cat:'Dieren'},{pt:'melro',nl:'merel',cat:'Dieren'},
+  {pt:'tigre',nl:'tijger',cat:'Dieren'},
+  {pt:'ladrão',nl:'boef',cat:'Personen'},{pt:'problema',nl:'probleem',cat:'Algemeen'},
+  {pt:'mulher',nl:'vrouw',cat:'Personen'},{pt:'senhoras',nl:'dames',cat:'Personen'},
+  {pt:'homem',nl:'man',cat:'Personen'},{pt:'senhor',nl:'meneer',cat:'Personen'},
+],
+handig:[
+  {pt:'este / estes',nl:'deze (mannelijk)'},{pt:'esta / estas',nl:'deze (vrouwelijk)'},
+  {pt:'aqui',nl:'hier'},{pt:'longe',nl:'ver'},{pt:'são',nl:'zijn'},
+  {pt:'agora',nl:'nu'},{pt:'depois',nl:'later'},{pt:'mas',nl:'maar'},
+  {pt:'bem',nl:'goed / lekker'},{pt:'nada',nl:'niets'},
+  {pt:'não',nl:'nee'},{pt:'sim',nl:'ja'},
+  {pt:'mais',nl:'meer / plus'},{pt:'menos',nl:'minder / min'},
+  {pt:'metade',nl:'helft'},{pt:'meio / meia',nl:'half'},
+  {pt:'se faz favor',nl:'alstublieft'},
+],
+verbos:[
+  {naam:'gostar',nl:'leuk vinden / houden van',rijen:[
+    {pr:'Eu',pn:'ik',cj:'gosto'},{pr:'Tu',pn:'jij',cj:'gostas'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'gosta'},{pr:'Nós',pn:'wij',cj:'gostamos'},
+    {pr:'(Vós)',pn:'(jullie)',cj:'gostais'},{pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'gostam'},
+  ]},
+  {naam:'querer',nl:'willen',rijen:[
+    {pr:'Eu',pn:'ik',cj:'quero'},{pr:'Tu',pn:'jij',cj:'queres'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'quer'},{pr:'Nós',pn:'wij',cj:'queremos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'querem'},
+  ],noot:'Beleefd: "Eu gostava de..." = Ik zou graag willen...'},
+  {naam:'comer',nl:'eten',rijen:[
+    {pr:'Eu',pn:'ik',cj:'como'},{pr:'Tu',pn:'jij',cj:'comes'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'come'},{pr:'Nós',pn:'wij',cj:'comemos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'comem'},
+  ]},
+  {naam:'beber',nl:'drinken',rijen:[
+    {pr:'Eu',pn:'ik',cj:'bebo'},{pr:'Tu',pn:'jij',cj:'bebes'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'bebe'},{pr:'Nós',pn:'wij',cj:'bebemos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'bebem'},
+  ]},
+  {naam:'nadar',nl:'zwemmen',rijen:[
+    {pr:'Eu',pn:'ik',cj:'nado'},{pr:'Tu',pn:'jij',cj:'nadas'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'nada *'},{pr:'Nós',pn:'wij',cj:'nadamos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'nadam'},
+  ],noot:'* nada = ook "niets"'},
+  {naam:'mexer',nl:'bewegen / roeren',rijen:[
+    {pr:'Eu',pn:'ik',cj:'mexo'},{pr:'Tu',pn:'jij',cj:'mexes'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'mexe'},{pr:'Nós',pn:'wij',cj:'mexemos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'mexem'},
+  ]},
+  {naam:'pintar',nl:'schilderen / verven',rijen:[
+    {pr:'Eu',pn:'ik',cj:'pinto'},{pr:'Tu',pn:'jij',cj:'pintas'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'pinta'},{pr:'Nós',pn:'wij',cj:'pintamos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'pintam'},
+  ]},
+  {naam:'desenhar',nl:'tekenen',rijen:[
+    {pr:'Eu',pn:'ik',cj:'desenho'},{pr:'Tu',pn:'jij',cj:'desenhas'},
+    {pr:'Ele/Ela/Você',pn:'hij/zij/u',cj:'desenha'},{pr:'Nós',pn:'wij',cj:'desenhamos'},
+    {pr:'Eles/Elas/Vocês',pn:'zij/jullie',cj:'desenham'},
+  ]},
+],
+gostos:[
+  {n:'1',v:'dançar',nl:'dansen',opts:['ballet','hip hop','livre']},
+  {n:'2',v:'improvisar',nl:'improviseren',opts:['na música','na cozinha','na vida']},
+  {n:'3',v:'trabalhar',nl:'werken',opts:['em casa','no jardim','no escritório']},
+  {n:'4',v:'nadar',nl:'zwemmen',opts:['no mar','no rio','na piscina']},
+  {n:'5',v:'ler',nl:'lezen',opts:['livros','o jornal','revistas']},
+  {n:'6',v:'ver televisão',nl:'tv kijken',opts:['à noite','na cama','com a família']},
+  {n:'7',v:'saltar',nl:'springen',opts:['no trampolim','na cama','para a água']},
+  {n:'8',v:'desenhar',nl:'tekenen',opts:['flores','animais','livremente']},
+  {n:'9',v:'comer',nl:'eten',opts:['doces','fruta','tudo']},
+  {n:'10',v:'dormir',nl:'slapen',opts:['cedo','tarde','muito']},
+  {n:'11',v:'brincar',nl:'spelen',opts:['com amigos','no parque','na rua']},
+  {n:'12',v:'jogar',nl:'spelen (sport)',opts:['futebol','basquete','desportos']},
+],
+sporten:[
+  {pt:'basquete',nl:'basketbal'},{pt:'volley',nl:'volleybal'},
+  {pt:'xadrez',nl:'schaken'},{pt:'badminton',nl:'badminton'},
+  {pt:'ténis',nl:'tennis'},{pt:'futebol',nl:'voetbal'},
+],
+beber_z:[
+  {pt:'Eu bebo água.',nl:'Ik drink water.'},
+  {pt:'Tu bebes sumo.',nl:'Jij drinkt sap.'},
+  {pt:'Ele/Ela/Você bebe chá.',nl:'Hij/zij/u drinkt thee.'},
+  {pt:'Nós bebemos café.',nl:'Wij drinken koffie.'},
+  {pt:'Eles/Elas/Vocês bebem leite.',nl:'Zij/jullie drinken melk.'},
+],
+beber_var:[
+  {cat:'Sumo de',opts:'laranja / banana / ananás / pêra / maçã / pêssego / uvas'},
+  {cat:'Chá de',opts:'menta / camomila / tília / cidreira / frutos vermelhos'},
+  {cat:'Café',opts:'curto / com leite / duplo / cheio'},
+  {cat:'Água',opts:'com gás / natural / fresca / com limão das pedras'},
+  {cat:'Vinho',opts:'branco / tinto / verde / da casa'},
+  {cat:'Cerveja',opts:'fresca / preta / sem álcool'},
+],
+querer_z:[
+  {pt:'Eu quero comer massa.',nl:'Ik wil pasta eten.'},
+  {pt:'Eu quero comer lasanha.',nl:'Ik wil lasagna eten.'},
+  {pt:'Eu quero comer esparguete bolonhesa.',nl:'Ik wil spaghetti bolognese eten.'},
+  {pt:'Eu quero comer arroz.',nl:'Ik wil rijst eten.'},
+  {pt:'Eu quero comer salada.',nl:'Ik wil salade eten.'},
+  {pt:'Eu quero comer batatas.',nl:'Ik wil aardappelen eten.'},
+  {pt:'Eu quero beber água.',nl:'Ik wil water drinken.'},
+  {pt:'Eu quero beber café.',nl:'Ik wil koffie drinken.'},
+  {pt:'Eu quero beber chá.',nl:'Ik wil thee drinken.'},
+  {pt:'Eu quero beber leite.',nl:'Ik wil melk drinken.'},
+  {pt:'Eu quero beber sumo.',nl:'Ik wil sap drinken.'},
+  {pt:'Eu quero jogar basquete.',nl:'Ik wil basketbal spelen.'},
+  {pt:'Eu quero jogar ténis.',nl:'Ik wil tennis spelen.'},
+  {pt:'Eu quero jogar xadrez.',nl:'Ik wil schaken.'},
+],
+comer_z:[
+  {pt:'Eu como melancia.',nl:'Ik eet watermeloen.'},
+  {pt:'Eu como morangos.',nl:'Ik eet aardbeien.'},
+  {pt:'Tu comes uma banana.',nl:'Jij eet een banaan.'},
+  {pt:'Nós comemos massa.',nl:'Wij eten pasta.'},
+],
+nadar_z:[
+  {pt:'Eu nado no rio.',nl:'Ik zwem in de rivier.'},
+  {pt:'Ele nada no mar.',nl:'Hij zwemt in de zee.'},
+  {pt:'Nós nadamos na piscina.',nl:'Wij zwemmen in het zwembad.'},
+],
+fruitkleur_z:[
+  {pt:'A banana é amarela.',nl:'De banaan is geel.'},
+  {pt:'As bananas são amarelas.',nl:'De bananen zijn geel.'},
+  {pt:'As uvas são roxas.',nl:'De druiven zijn paars.'},
+  {pt:'Os mirtilos são azuis.',nl:'De bosbessen zijn blauw.'},
+  {pt:'Os pêssegos são cor de laranja.',nl:'De perziken zijn oranje.'},
+  {pt:'A melancia é vermelha.',nl:'De watermeloen is rood.'},
+  {pt:'O ananás é amarelo.',nl:'De ananas is geel.'},
+  {pt:'A maçã é vermelha.',nl:'De appel is rood.'},
+],
+casos_z:[
+  {pt:'O cão come pão.',nl:'De hond eet brood.'},
+  {pt:'A mão do leão.',nl:'De hand van de leeuw.'},
+  {pt:'No verão há melão!',nl:'In de zomer is er meloen.'},
+  {pt:'Tenho um milhão.',nl:'Ik heb een miljoen.'},
+  {pt:'O nau traz carapau.',nl:'De boot brengt horsmakreel.'},
+  {pt:'O tempo está mau.',nl:'Het weer is slecht.'},
+  {pt:'O pau do João.',nl:'De stok van João.'},
+  {pt:'Eu vou comer.',nl:'Ik ga eten.'},
+  {pt:'Abril águas mil.',nl:'April doet wat hij wil.'},
+],
+data_z:[
+  {pt:'Eu nasci em [stad]',nl:'Ik ben geboren in [stad]'},
+  {pt:'Eu nasci no ano [jaar]',nl:'Ik ben geboren in het jaar [jaar]'},
+  {pt:'A minha data de nascimento é vinte de fevereiro de dois mil e quinze',nl:'Mijn geboortedatum is 20 februari 2015'},
+],
+maanden_z:[
+  {pt:'Em janeiro faz frio.',nl:'In januari is het koud.'},
+  {pt:'Em fevereiro também.',nl:'In februari ook.'},
+  {pt:'Em março chove muito.',nl:'In maart regent het veel.'},
+  {pt:'Em abril também.',nl:'In april ook.'},
+  {pt:'Em maio vem as flores.',nl:'In mei komen de bloemen.'},
+  {pt:'Em junho há muito sol.',nl:'In juni is er veel zon.'},
+  {pt:'Em julho também.',nl:'In juli ook.'},
+  {pt:'Em agosto só quero nadar.',nl:'In augustus wil ik alleen maar zwemmen.'},
+  {pt:'Em setembro o calor vai parar.',nl:'In september houdt de hitte op.'},
+  {pt:'Em outubro volta a chuva.',nl:'In oktober komt de regen terug.'},
+  {pt:'Em novembro volta o frio.',nl:'In november komt de kou terug.'},
+  {pt:'Em dezembro pode nevar.',nl:'In december kan het sneeuwen.'},
+],
+richtingen_z:[
+  {pt:'para cima',nl:'omhoog'},{pt:'para baixo',nl:'omlaag'},
+  {pt:'para frente',nl:'vooruit'},{pt:'para trás',nl:'achteruit'},
+  {pt:'para esquerda',nl:'naar links'},{pt:'para direita',nl:'naar rechts'},
+],
+kleuren:[
+  {pt:'vermelho',nl:'rood',bg:'#e53e3e',fg:'#fff'},
+  {pt:'laranja',nl:'oranje',bg:'#ed8936',fg:'#fff'},
+  {pt:'amarelo',nl:'geel',bg:'#ecc94b',fg:'#333'},
+  {pt:'verde',nl:'groen',bg:'#38a169',fg:'#fff'},
+  {pt:'azul',nl:'blauw',bg:'#3182ce',fg:'#fff'},
+  {pt:'roxo / lilás',nl:'paars / lila',bg:'#805ad5',fg:'#fff'},
+  {pt:'cor de rosa',nl:'roze',bg:'#ed64a6',fg:'#fff'},
+  {pt:'cinzento',nl:'grijs',bg:'#718096',fg:'#fff'},
+  {pt:'castanho',nl:'bruin',bg:'#744210',fg:'#fff'},
+  {pt:'preto',nl:'zwart',bg:'#1a1a18',fg:'#fff'},
+  {pt:'branco',nl:'wit',bg:'#f7fafc',fg:'#333'},
+],
+frutas:[
+  {enk:'uva',mv:'uvas',lidw:'a/as',nl:'druif/druiven'},
+  {enk:'maçã',mv:'maçãs',lidw:'a/as',nl:'appel/appels'},
+  {enk:'pêra',mv:'pêras',lidw:'a/as',nl:'peer/peren'},
+  {enk:'ananás',mv:'ananases',lidw:'o/os',nl:'ananas'},
+  {enk:'ameixa',mv:'ameixas',lidw:'a/as',nl:'pruim/pruimen'},
+  {enk:'melancia',mv:'melancias',lidw:'a/as',nl:'watermeloen'},
+  {enk:'pêssego',mv:'pêssegos',lidw:'o/os',nl:'perzik/perziken'},
+  {enk:'melão',mv:'melões',lidw:'o/os',nl:'meloen (ovaal)'},
+  {enk:'meloa',mv:'meloas',lidw:'a/as',nl:'meloen (rond)'},
+  {enk:'mirtilo',mv:'mirtilos',lidw:'o/os',nl:'bosbes/bosbessen'},
+  {enk:'morango',mv:'morangos',lidw:'o/os',nl:'aardbei/aardbeien'},
+  {enk:'framboesa',mv:'framboesas',lidw:'a/as',nl:'framboos/frambozen'},
+  {enk:'alperce',mv:'alperces',lidw:'a/as',nl:'abrikoos/abrikozen'},
+  {enk:'banana',mv:'bananas',lidw:'a/as',nl:'banaan/bananen'},
+],
+ao:[
+  {pt:'mão',nl:'hand'},{pt:'cão',nl:'hond'},{pt:'pão',nl:'brood'},
+  {pt:'verão',nl:'zomer'},{pt:'melão',nl:'meloen'},{pt:'leão',nl:'leeuw'},{pt:'milhão',nl:'miljoen'},
+],
+au:[
+  {pt:'pau',nl:'stok'},{pt:'mau',nl:'slecht'},{pt:'nau',nl:'boot'},{pt:'carapau',nl:'horsmakreel'},
+],
+ou:[
+  {pt:'ouro',nl:'goud'},{pt:'tesouro',nl:'schat'},{pt:'couro',nl:'leer/huid'},
+  {pt:'dou',nl:'ik geef'},{pt:'vou',nl:'ik ga'},{pt:'Douro',nl:'de Douro (rivier)'},
+],
+nasaal:[
+  {pt:'trampolim',nl:'trampoline'},{pt:'bem',nl:'goed'},{pt:'cem',nl:'honderd'},
+  {pt:'sim',nl:'ja'},{pt:'mim',nl:'mij'},{pt:'bom',nl:'goed (mannelijk)'},
+  {pt:'som',nl:'geluid'},{pt:'um',nl:'een'},{pt:'atum',nl:'tonijn'},
+],
+cons:[
+  {klank:'ar',wrd:['saltar (springen)','calor (warmte)','amor (liefde)','favor (gunst)']},
+  {klank:'er / ir',wrd:['viver (leven)','beber (drinken)','dormir (slapen)','rir (lachen)']},
+  {klank:'or / ur',wrd:['curto (kort)','urso (beer)','urbano (stedelijk)']},
+  {klank:'aar / eer / ier / oer',wrd:['tartaruga (schildpad)','comer (eten)','ficar (blijven)']},
+],
+nummers:{
+  'Unidades (1-10)':[{n:1,w:'um'},{n:2,w:'dois'},{n:3,w:'três'},{n:4,w:'quatro'},{n:5,w:'cinco'},{n:6,w:'seis'},{n:7,w:'sete'},{n:8,w:'oito'},{n:9,w:'nove'},{n:10,w:'dez'}],
+  'Dez a vinte (11-20)':[{n:11,w:'onze'},{n:12,w:'doze'},{n:13,w:'treze'},{n:14,w:'quatorze'},{n:15,w:'quinze'},{n:16,w:'dezasseis'},{n:17,w:'dezassete'},{n:18,w:'dezoito'},{n:19,w:'dezanove'},{n:20,w:'vinte'}],
+  'Tientallen (20-100)':[{n:20,w:'vinte'},{n:30,w:'trinta'},{n:40,w:'quarenta'},{n:50,w:'cinquenta'},{n:60,w:'sessenta'},{n:70,w:'setenta'},{n:80,w:'oitenta'},{n:90,w:'noventa'},{n:100,w:'cem'}],
+},
+maanden:[
+  {pt:'janeiro',nl:'januari'},{pt:'fevereiro',nl:'februari'},{pt:'março',nl:'maart'},
+  {pt:'abril',nl:'april'},{pt:'maio',nl:'mei'},{pt:'junho',nl:'juni'},
+  {pt:'julho',nl:'juli'},{pt:'agosto',nl:'augustus'},{pt:'setembro',nl:'september'},
+  {pt:'outubro',nl:'oktober'},{pt:'novembro',nl:'november'},{pt:'dezembro',nl:'december'},
+],
+richtingen:[
+  {pt:'para cima',nl:'omhoog'},{pt:'para baixo',nl:'omlaag'},
+  {pt:'para frente',nl:'vooruit'},{pt:'para trás',nl:'achteruit'},
+  {pt:'para esquerda',nl:'naar links'},{pt:'para direita',nl:'naar rechts'},
+],
+animais:[
+  {pt:'zebra',nl:'zebra',kleur:'preto e branco'},
+  {pt:'elefante',nl:'olifant',kleur:'cinzento'},
+  {pt:'cavalo',nl:'paard',kleur:'branco, preto of castanho'},
+  {pt:'macaco',nl:'aap',kleur:'castanho'},
+  {pt:'crocodilo',nl:'krokodil',kleur:'verde'},
+  {pt:'peixe',nl:'vis',kleur:'azul'},
+  {pt:'pássaro',nl:'vogel',kleur:'vermelho'},
+  {pt:'coelho',nl:'konijn',kleur:'cor-de-rosa'},
+  {pt:'pantera',nl:'panter',kleur:'cor-de-rosa'},
+  {pt:'tartaruga',nl:'schildpad',kleur:'verde'},
+  {pt:'borboleta',nl:'vlinder',kleur:'alle kleuren van de regenboog'},
+  {pt:'tigre',nl:'tijger',kleur:'castanho'},
+  {pt:'leão',nl:'leeuw (m)',kleur:'castanho'},
+  {pt:'leoa',nl:'leeuwin',kleur:'castanha'},
+  {pt:'corvo',nl:'raaf',kleur:'preto'},
+  {pt:'pomba',nl:'duif',kleur:'branca'},
+  {pt:'abelha',nl:'bij',kleur:'amarela'},
+  {pt:'pato',nl:'eend',kleur:'amarelo'},
+  {pt:'caranguejo',nl:'krab',kleur:'laranja'},
+  {pt:'gato',nl:'kat',kleur:''},
+  {pt:'cão',nl:'hond',kleur:''},
+  {pt:'rato',nl:'muis',kleur:''},
+  {pt:'melro',nl:'merel',kleur:''},
+],
+animais_z:[
+  {pt:'Um zebra é preto e branco.',nl:'Een zebra is zwart en wit.'},
+  {pt:'Um elefante é cinzento.',nl:'Een olifant is grijs.'},
+  {pt:'Um macaco é castanho.',nl:'Een aap is bruin.'},
+  {pt:'Um crocodilo é verde.',nl:'Een krokodil is groen.'},
+  {pt:'Um tigre é castanho.',nl:'Een tijger is bruin.'},
+  {pt:'Um leão é castanho.',nl:'Een leeuw is bruin.'},
+  {pt:'Um corvo é preto.',nl:'Een raaf is zwart.'},
+  {pt:'Uma abelha é amarela.',nl:'Een bij is geel.'},
+  {pt:'Um caranguejo é laranja.',nl:'Een krab is oranje.'},
+  {pt:'Uma borboleta pode ser de todas as cores do arco-íris.',nl:'Een vlinder kan alle kleuren van de regenboog hebben.'},
+  {pt:'Um cavalo pode ser branco, preto, castanho ou de outra cor.',nl:'Een paard kan wit, zwart, bruin of een andere kleur zijn.'},
+],
+fruitkleur2_z:[
+  {pt:'Uma maçã é vermelha, verde ou amarela.',nl:'Een appel is rood, groen of geel.'},
+  {pt:'Uma banana é amarela.',nl:'Een banaan is geel.'},
+  {pt:'Um pêssego é cor de rosa ou amarelo.',nl:'Een perzik is roze of geel.'},
+  {pt:'Uma pêra é verde.',nl:'Een peer is groen.'},
+  {pt:'Um quivi é verde.',nl:'Een kiwi is groen.'},
+  {pt:'Uvas são azuis ou vermelhas ou verdes.',nl:'Druiven zijn blauw, rood of groen.'},
+  {pt:'Um melão é verde por fora e amarelo por dentro.',nl:'Een meloen is groen van buiten en geel van binnen.'},
+  {pt:'Um coco é verde por fora e branco por dentro.',nl:'Een kokosnoot is groen van buiten en wit van binnen.'},
+  {pt:'Mirtilos são azuis por fora e verdes por dentro.',nl:'Bosbessen zijn blauw van buiten en groen van binnen.'},
+  {pt:'Melancia é verde por fora e vermelha por dentro.',nl:'Watermeloen is groen van buiten en rood van binnen.'},
+],
+a_az:[
+  {pt:'à',nl:'naar de (vrouwelijk)'},
+  {pt:'às',nl:'naar de (meervoud vrouwelijk)'},
+  {pt:'eu vou à casa',nl:'ik ga naar huis'},
+  {pt:'eu vou às casas',nl:'ik ga naar de huizen'},
+  {pt:'por dentro',nl:'van binnen'},
+  {pt:'por fora',nl:'van buiten'},
+  {pt:'quivi',nl:'kiwi'},
+  {pt:'coco',nl:'kokosnoot'},
+  {pt:'arco-íris',nl:'regenboog'},
+],
+eten:[
+  {pt:'pizza',nl:'pizza'},{pt:'massa',nl:'pasta'},{pt:'arroz',nl:'rijst'},
+  {pt:'batatas',nl:'aardappelen'},{pt:'esparguete bolonhesa',nl:'spaghetti bolognese'},
+  {pt:'lasanha',nl:'lasagna'},{pt:'salada',nl:'salade'},
+  {pt:'legumes',nl:'groenten'},{pt:'gelados',nl:'ijsjes'},
+  {pt:'sobremesas',nl:'toetjes'},{pt:'sopa',nl:'soep'},
+  {pt:'queijo',nl:'kaas'},{pt:'batatas fritas',nl:'patat'},
+  {pt:'pepino ácido',nl:'augurk'},{pt:'couve de Bruxelas',nl:'spruitjes'},
+  {pt:'bolo de chocolate',nl:'chocoladetaart'},{pt:'bolachas',nl:'koekjes'},
+  {pt:'queque',nl:'muffin'},{pt:'croquete de carne',nl:'vleeskroket'},
+],
+drinken:[
+  {pt:'água',nl:'water'},{pt:'sumo',nl:'sap'},{pt:'chá',nl:'thee'},
+  {pt:'café',nl:'koffie'},{pt:'leite',nl:'melk'},
+  {pt:'vinho',nl:'wijn'},{pt:'cerveja',nl:'bier'},{pt:'sumo natural',nl:'vers sap'},
+],
+};
+
+// Fruit als woordenlijst voor quiz/flash
+const fruitasWoorden = D.frutas.map(f=>({pt:f.enk,nl:f.nl.split('/')[0].trim()}));
+
+function fc(data,id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.innerHTML=data.map(w=>
+    `<div class="fc" onclick="this.classList.toggle('rev')"><span class="pt">${w.pt}</span><span class="nl">${w.nl}</span></div>`).join('');
+}
+function zinBlock(arr,id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.innerHTML=arr.map(z=>
+    `<div class="zin"><span class="pt">${z.pt}</span><span class="nl">${z.nl}</span></div>`).join('');
+}
+function buildVerbos(){
+  document.getElementById('verb-content').innerHTML=D.verbos.map(v=>
+    `<div class="card">
+      <div class="card-title">Verbo: ${v.naam} = ${v.nl}</div>
+      <div class="verb-grid">${v.rijen.map(r=>
+        `<div class="vrow"><span class="pr">${r.pr}<span class="pr-nl">${r.pn}</span></span><span class="cj">${r.cj}</span></div>`).join('')}
+      </div>${v.noot?`<p class="verb-note">${v.noot}</p>`:''}
+    </div>`).join('');
+}
+function buildGostosDetail(){
+  document.getElementById('gostos-detail').innerHTML=D.gostos.map(g=>
+    `<div style="margin-bottom:10px">
+      <div style="font-size:13px;color:#888;margin-bottom:4px">${g.n}. <strong style="color:#1a1a18">${g.v}</strong> = ${g.nl}</div>
+      <div>${g.opts.map(o=>`<span class="pill">${o}</span>`).join('')}</div>
+    </div>`).join('');
+}
+function buildBeberVar(){
+  document.getElementById('beber-var').innerHTML=D.beber_var.map(b=>
+    `<div style="margin-bottom:8px">
+      <div style="font-size:13px;font-weight:500;color:#666;margin-bottom:3px">${b.cat}</div>
+      <div>${b.opts.split(' / ').map(o=>`<span class="pill">${o}</span>`).join('')}</div>
+    </div>`).join('');
+}
+function buildCons(){
+  document.getElementById('cons-content').innerHTML=D.cons.map(g=>
+    `<div style="margin-bottom:10px">
+      <div style="font-size:12px;font-weight:600;color:#2563eb;margin-bottom:4px">${g.klank}</div>
+      <div>${g.wrd.map(w=>`<span class="pill">${w}</span>`).join('')}</div>
+    </div>`).join('');
+}
+function buildNums(){
+  document.getElementById('num-content').innerHTML=Object.entries(D.nummers).map(([l,items])=>
+    `<div class="sub">${l}</div><div class="num-grid">${items.map(i=>
+      `<div class="ni"><span class="n">${i.n}</span><span class="w">${i.w}</span></div>`).join('')}</div>`).join('');
+}
+function buildKleuren(){
+  document.getElementById('kleur-grid').innerHTML=D.kleuren.map(k=>
+    `<div class="fc" onclick="this.classList.toggle('rev')" style="background:${k.bg};border-color:transparent">
+      <span class="pt" style="color:${k.fg}">${k.pt}</span>
+      <span class="nl" style="color:${k.fg};display:none">${k.nl}</span>
+    </div>`).join('');
+  // override reveal for color cards
+  document.querySelectorAll('#kleur-grid .fc').forEach(el=>{
+    el.addEventListener('click',function(){
+      this.classList.toggle('rev');
+      const nl=this.querySelector('.nl');
+      nl.style.display=this.classList.contains('rev')?'block':'none';
+    });
+  });
+}
+function buildFruitTable(){
+  document.getElementById('fruit-table').innerHTML=
+    `<tr style="border-bottom:1px solid #e5e4e0"><th style="padding:8px 4px;font-size:11px;color:#aaa;text-align:left;font-weight:600">Enkelvoud</th><th style="padding:8px 4px;font-size:11px;color:#aaa;text-align:left;font-weight:600">Meervoud</th><th style="padding:8px 4px;font-size:11px;color:#aaa;text-align:left;font-weight:600">Nederlands</th></tr>`+
+    D.frutas.map(f=>`<tr><td>${f.lidw.split('/')[0]} ${f.enk}</td><td>${f.lidw.split('/')[1]} ${f.mv}</td><td>${f.nl}</td></tr>`).join('');
+}
+
+function getAllWords(){
+  const all=[];
+  const add=(arr,cat)=>arr.forEach(w=>{if(w.pt&&w.nl)all.push({pt:w.pt,nl:w.nl,cat});});
+  add(D.woorden,'Palavras');add(D.handig,'Handige woorden');
+  add(D.gostos.map(g=>({pt:g.v,nl:g.nl})),'Gostos');
+  add(D.sporten,'Sporten & spellen');
+  add(D.animais.map(a=>({pt:a.pt,nl:a.nl})),'Dieren');
+  add(D.eten,'Eten');add(D.drinken,'Drinken');
+  add(D.maanden,'Maanden');add(D.richtingen,'Richtingen');
+  add(D.kleuren.map(k=>({pt:k.pt,nl:k.nl})),'Kleuren');
+  add(fruitasWoorden,'Fruit');
+  add(D.ao,'Uitspraak ão');add(D.au,'Uitspraak au');add(D.ou,'Uitspraak ou');add(D.nasaal,'Nasale klinkers');
+  D.verbos.forEach(v=>{
+    all.push({pt:v.naam,nl:v.nl,cat:'Werkwoorden'});
+    v.rijen.forEach(r=>all.push({pt:r.cj.replace(' *',''),nl:`${r.pr} (${r.pn}) - ${v.naam}`,cat:'Werkwoorden'}));
+  });
+  return all.sort((a,b)=>a.pt.localeCompare(b.pt));
+}
+let allWords=[];
+function renderWb(words){
+  const el=document.getElementById('wb-content');
+  if(!words.length){el.innerHTML='<div style="text-align:center;padding:2rem;color:#aaa">Geen resultaten</div>';return;}
+  const bycat={};
+  words.forEach(w=>{if(!bycat[w.cat])bycat[w.cat]=[];bycat[w.cat].push(w);});
+  el.innerHTML=Object.entries(bycat).map(([cat,items])=>
+    `<span class="wb-cat">${cat}</span>
+    <table class="wb-table">${items.map(w=>`<tr><td>${w.pt}</td><td>${w.nl}</td></tr>`).join('')}</table>`).join('');
+}
+function filterWb(){
+  const q=document.getElementById('wb-search').value.toLowerCase();
+  renderWb(q?allWords.filter(w=>w.pt.toLowerCase().includes(q)||w.nl.toLowerCase().includes(q)):allWords);
+}
+
+function shuffle(a){return[...a].sort(()=>Math.random()-.5)}
+
+function buildPool(){
+  const pool=[];
+  function addPair(arr,cat){
+    arr.forEach(w=>{
+      if(!w.pt||!w.nl)return;
+      // skip eigennamen (hoofdletter), woorden met haakjes, of te korte antwoorden
+      if(w.pt[0]===w.pt[0].toUpperCase()&&w.pt[0]!==w.pt[0].toLowerCase())return;
+      if(w.pt.includes('('))return;
+      if(w.nl.includes('('))return;
+      const others=arr.filter(x=>x.pt!==w.pt);
+      if(others.length<3)return;
+      const w3=shuffle(others).slice(0,3);
+      pool.push({q:`Wat betekent "${w.pt}"?`,a:w.nl,opts:shuffle([w.nl,...w3.map(x=>x.nl)]),cat});
+      pool.push({q:`Hoe zeg je "${w.nl}"?`,a:w.pt,opts:shuffle([w.pt,...w3.map(x=>x.pt)]),cat});
+    });
+  }
+  addPair(D.woorden,'Palavras');addPair(D.handig,'Handige woorden');
+  addPair(D.eten,'Eten');addPair(D.drinken,'Drinken');
+  addPair(D.maanden,'Maanden');addPair(D.richtingen,'Richtingen');
+  addPair(D.kleuren.map(k=>({pt:k.pt,nl:k.nl})),'Kleuren');
+  addPair(fruitasWoorden,'Fruit');addPair(D.sporten,'Sporten');
+  addPair(D.animais.map(a=>({pt:a.pt,nl:a.nl})),'Dieren');
+  addPair(D.ao,'Uitspraak ão');addPair(D.ou,'Uitspraak ou');addPair(D.nasaal,'Nasale klinkers');
+  addPair(D.gostos.map(g=>({pt:g.v,nl:g.nl})),'Gostos');
+  // Zinnen meerkeuze
+  D.maanden_z.forEach(z=>{
+    const others=D.maanden_z.filter(x=>x.pt!==z.pt);
+    if(others.length<3)return;
+    const w3=shuffle(others).slice(0,3);
+    pool.push({q:z.pt,a:z.nl,opts:shuffle([z.nl,...w3.map(x=>x.nl)]),cat:'Maanden zinnen'});
+    pool.push({q:z.nl,a:z.pt,opts:shuffle([z.pt,...w3.map(x=>x.pt)]),cat:'Maanden zinnen'});
+  });
+  D.fruitkleur_z.forEach(z=>{
+    const others=D.fruitkleur_z.filter(x=>x.pt!==z.pt);
+    if(others.length<3)return;
+    const w3=shuffle(others).slice(0,3);
+    pool.push({q:z.pt,a:z.nl,opts:shuffle([z.nl,...w3.map(x=>x.nl)]),cat:'Fruit + kleur'});
+  });
+  D.querer_z.forEach(z=>{
+    const others=D.querer_z.filter(x=>x.pt!==z.pt);
+    if(others.length<3)return;
+    const w3=shuffle(others).slice(0,3);
+    pool.push({q:z.nl,a:z.pt,opts:shuffle([z.pt,...w3.map(x=>x.pt)]),cat:'Querer zinnen'});
+  });
+  // Invuloefeningen
+  const invul=[
+    {q:'Eu ___ massa. (willen eten)',a:'quero comer',opts:['quero comer','gosto de','bebo','nado'],cat:'Invullen'},
+    {q:'Tu ___ sumo. (willen drinken)',a:'queres beber',opts:['queres beber','comes','gostas de','nadas'],cat:'Invullen'},
+    {q:'Eu ___ água, se faz favor. (beleefd willen)',a:'quero',opts:['quero','gosto','bebo','como'],cat:'Invullen'},
+    {q:'Eu ___ de nadar. (leuk vinden)',a:'gosto',opts:['gosto','quero','bebo','como'],cat:'Invullen'},
+    {q:'Em janeiro faz ___.',a:'frio',opts:['frio','sol','chuva','calor'],cat:'Invullen'},
+    {q:'Em junho há muito ___.',a:'sol',opts:['sol','frio','chuva','nevar'],cat:'Invullen'},
+    {q:'Em dezembro pode ___.',a:'nevar',opts:['nevar','nadar','comer','beber'],cat:'Invullen'},
+    {q:'três ___ um é dois',a:'menos',opts:['menos','mais','é','não'],cat:'Invullen'},
+    {q:'dois ___ dois é quatro',a:'mais',opts:['mais','menos','é','não'],cat:'Invullen'},
+  ];
+  invul.forEach(i=>pool.push(i));
+  // Werkwoorden
+  D.verbos.forEach(v=>{
+    v.rijen.forEach(r=>{
+      const others=v.rijen.filter(x=>x.pr!==r.pr);
+      if(others.length<3)return;
+      const w3=shuffle(others).slice(0,3);
+      pool.push({q:`"${v.naam}" voor ${r.pr} (${r.pn})?`,a:r.cj.replace(' *',''),
+        opts:shuffle([r.cj.replace(' *',''),...w3.map(x=>x.cj)]),cat:'Werkwoorden'});
+    });
+  });
+  const nums=Object.values(D.nummers).flat();
+  nums.forEach(n=>{
+    const others=nums.filter(x=>x.n!==n.n);
+    const w3=shuffle(others).slice(0,3);
+    pool.push({q:`Hoe zeg je ${n.n}?`,a:n.w,opts:shuffle([n.w,...w3.map(x=>x.w)]),cat:'Nummers'});
+  });
+  return pool;
+}
+
+// FLASHCARDS
+let foPool=[],foIdx=0,foOk=0,foNo=0;
+function getFlashPool(){
+  const all=[];
+  [D.woorden,D.handig,D.eten,D.drinken,D.sporten,fruitasWoorden,D.maanden,D.richtingen,D.animais.map(a=>({pt:a.pt,nl:a.nl})),
+   D.kleuren.map(k=>({pt:k.pt,nl:k.nl})),D.ao,D.au,D.ou,D.nasaal,
+   D.gostos.map(g=>({pt:g.v,nl:g.nl}))].forEach(arr=>arr.forEach(w=>{if(w.pt&&w.nl)all.push({pt:w.pt,nl:w.nl});}));
+  return shuffle(all);
+}
+function startFlash(){
+  foPool=getFlashPool();foIdx=0;foOk=0;foNo=0;
+  document.getElementById('fo-ok').textContent=0;
+  document.getElementById('fo-no').textContent=0;
+  document.getElementById('fo-end').style.display='none';
+  document.getElementById('fo-card').style.display='flex';
+  document.getElementById('fo-reveal').style.display='block';
+  document.getElementById('fo-btns').style.display='none';
+  showFlashCard();
+}
+function showFlashCard(){
+  if(foIdx>=foPool.length){endFlash();return;}
+  const w=foPool[foIdx];
+  document.getElementById('fo-card').classList.remove('revealed');
+  document.getElementById('fo-woord').textContent=w.pt;
+  document.getElementById('fo-antwoord').textContent=w.nl;
+  document.getElementById('fo-teller').textContent=(foIdx+1)+' / '+foPool.length;
+  document.getElementById('fo-fill').style.width=Math.round(foIdx/foPool.length*100)+'%';
+  document.getElementById('fo-reveal').style.display='block';
+  document.getElementById('fo-btns').style.display='none';
+}
+function revealFlash(){
+  document.getElementById('fo-card').classList.add('revealed');
+  document.getElementById('fo-reveal').style.display='none';
+  document.getElementById('fo-btns').style.display='grid';
+}
+function beoordeelFlash(wist){
+  if(wist)foOk++;else foNo++;
+  document.getElementById('fo-ok').textContent=foOk;
+  document.getElementById('fo-no').textContent=foNo;
+  foIdx++;showFlashCard();
+}
+function endFlash(){
+  const pct=foPool.length>0?Math.round(foOk/foPool.length*100):0;
+  document.getElementById('fo-card').style.display='none';
+  document.getElementById('fo-reveal').style.display='none';
+  document.getElementById('fo-btns').style.display='none';
+  document.getElementById('fo-pct').textContent=pct+'%';
+  document.getElementById('fo-end-ok').textContent=foOk;
+  document.getElementById('fo-end-no').textContent=foNo;
+  document.getElementById('fo-end').style.display='block';
+  document.getElementById('fo-fill').style.width='100%';
+}
+
+// QUIZ
+let sq=[],qi=0,qsc=0,qans=false;
+function resetQ(){
+  try{
+  sq=shuffle(buildPool()).slice(0,20);
+  qi=0;qsc=0;qans=false;
+  document.getElementById('quiz-end').style.display='none';
+  document.getElementById('quiz-game').style.display='block';
+  document.getElementById('qn').style.display='none';
+  document.getElementById('qf').textContent='';
+  nextQ();
+  }catch(e){console.error('resetQ error:',e);document.getElementById('qq').textContent='Fout: '+e.message;}
+}
+function nextQ(){
+  try{
+  if(qi>=20){endQ();return;}
+  qans=false;
+  const item=sq[qi];
+  document.getElementById('qs-nr').textContent=qi+1;
+  document.getElementById('q-fill').style.width=Math.round(qi/20*100)+'%';
+  document.getElementById('q-cat').textContent=item.cat;
+  document.getElementById('qq').textContent=item.q;
+  document.getElementById('qf').textContent='';
+  document.getElementById('qn').style.display='none';
+  const qo=document.getElementById('qo');
+  qo.innerHTML=item.opts.map((o,i)=>`<button data-idx="${i}">${o}</button>`).join('');
+  qo.querySelectorAll('button').forEach((btn,i)=>{
+    btn.addEventListener('click',()=>ansQ(btn,item.opts[i],item.a));
+  });
+  qi++;
+  }catch(e){console.error('nextQ error:',e);document.getElementById('qq').textContent='Fout: '+e.message;}
+}
+function ansQ(btn,chosen,correct){
+  if(qans)return;qans=true;
+  document.querySelectorAll('.q-opts button').forEach(b=>{
+    b.disabled=true;
+    if(b.textContent.trim()===correct)b.classList.add('ok');
+  });
+  if(chosen===correct){qsc++;btn.classList.add('ok');document.getElementById('qf').textContent='Muito bem!';}
+  else{btn.classList.add('no');document.getElementById('qf').textContent='Het is: "'+correct+'"';}
+  document.getElementById('qn').style.display='block';
+}
+function endQ(){
+  document.getElementById('quiz-game').style.display='none';
+  document.getElementById('quiz-end').style.display='block';
+  document.getElementById('q-fill').style.width='100%';
+  document.getElementById('q-end-score').textContent=qsc+'/20';
+  const labels=['Blijven oefenen!','Op de goede weg!','Goed gedaan!','Bijna perfect!','Perfect!'];
+  document.getElementById('q-end-label').textContent=labels[Math.min(Math.floor(qsc/5),4)];
+}
+
+// INTYPEN
+function normalize(s){
+  return s.toLowerCase().trim()
+    .replace(/[àáâã]/g,'a').replace(/[éêè]/g,'e').replace(/[íì]/g,'i')
+    .replace(/[óôõò]/g,'o').replace(/[úù]/g,'u').replace(/ç/g,'c');
+}
+let tpool=[],ti=0,tsc=0,tans=false;
+function buildTypePool(){
+  const pool=[];
+  function add(arr,cat){arr.forEach(w=>{if(w.pt&&w.nl&&!w.pt.includes('/'))pool.push({q:'Hoe zeg je "'+w.nl+'" in het Portugees?',a:w.pt,cat});});}
+  add(D.woorden,'Palavras');add(D.handig,'Handige woorden');
+  add(D.eten,'Eten');add(D.drinken,'Drinken');
+  add(D.maanden,'Maanden');add(D.richtingen,'Richtingen');
+  add(D.kleuren.map(k=>({pt:k.pt,nl:k.nl})),'Kleuren');
+  add(fruitasWoorden,'Fruit');add(D.sporten,'Sporten');
+  add(D.animais.map(a=>({pt:a.pt,nl:a.nl})),'Dieren');
+  add(D.ao,'Uitspraak ão');add(D.ou,'Uitspraak ou');add(D.nasaal,'Nasale klinkers');
+  add(D.gostos.map(g=>({pt:g.v,nl:g.nl})),'Gostos');
+  Object.values(D.nummers).flat().forEach(n=>pool.push({q:'Hoe schrijf je '+n.n+'?',a:n.w,cat:'Nummers'}));
+  return pool;
+}
+function resetType(){
+  tpool=shuffle(buildTypePool()).slice(0,20);
+  ti=0;tsc=0;tans=false;
+  document.getElementById('type-end').style.display='none';
+  document.getElementById('type-game').style.display='block';
+  document.getElementById('tn').style.display='none';
+  document.getElementById('tf').textContent='';
+  const inp=document.getElementById('t-input');
+  inp.value='';inp.className='type-input';inp.disabled=false;
+  document.getElementById('t-check').disabled=true;
+  nextType();
+}
+function nextType(){
+  if(ti>=20){endType();return;}
+  tans=false;
+  const item=tpool[ti];
+  document.getElementById('ts-nr').textContent=ti+1;
+  document.getElementById('t-fill').style.width=Math.round(ti/20*100)+'%';
+  document.getElementById('t-cat').textContent=item.cat;
+  document.getElementById('tq').textContent=item.q;
+  document.getElementById('tf').textContent='';
+  document.getElementById('tn').style.display='none';
+  const inp=document.getElementById('t-input');
+  inp.value='';inp.className='type-input';inp.disabled=false;
+  document.getElementById('t-check').disabled=true;
+  inp.focus();ti++;
+}
+function typeInput(){document.getElementById('t-check').disabled=document.getElementById('t-input').value.trim()==='';}
+function typeEnter(e){if(e.key==='Enter'&&!tans)checkType();}
+function checkType(){
+  if(tans)return;
+  const inp=document.getElementById('t-input');
+  const val=inp.value.trim();if(!val)return;
+  tans=true;
+  const item=tpool[ti-1];
+  const ok=normalize(item.a)===normalize(val);
+  if(ok){tsc++;inp.className='type-input ok';document.getElementById('tf').textContent='Muito bem!';}
+  else{inp.className='type-input no';document.getElementById('tf').textContent='Het goede antwoord: "'+item.a+'"';}
+  inp.disabled=true;document.getElementById('t-check').disabled=true;
+  document.getElementById('tn').style.display='block';
+}
+function endType(){
+  document.getElementById('type-game').style.display='none';
+  document.getElementById('type-end').style.display='block';
+  document.getElementById('t-fill').style.width='100%';
+  document.getElementById('t-end-score').textContent=tsc+'/20';
+  const labels=['Blijven oefenen!','Op de goede weg!','Goed gedaan!','Bijna perfect!','Perfect!'];
+  document.getElementById('t-end-label').textContent=labels[Math.min(Math.floor(tsc/5),4)];
+}
+
+// REKENEN
+const nums10=Object.values(D.nummers)[0]; // 1-10
+let rSoms=[],rIdx=0,rSc=0,rTot=0,rAns=false;
+function buildRekenSommen(){
+  const sommen=[];
+  const ns=nums10.map(x=>x.n);
+  for(let i=0;i<30;i++){
+    const a=ns[Math.floor(Math.random()*ns.length)];
+    const b=ns[Math.floor(Math.random()*ns.length)];
+    const plus=Math.random()>0.5;
+    if(!plus&&a<b)continue;
+    const ans=plus?a+b:a-b;
+    if(ans<0||ans>20)continue;
+    const allNums=Object.values(D.nummers).flat();
+    const ansWord=allNums.find(x=>x.n===ans);
+    const aWord=nums10.find(x=>x.n===a);
+    const bWord=nums10.find(x=>x.n===b);
+    if(!ansWord||!aWord||!bWord)continue;
+    const op=plus?'mais':'menos';
+    const opSymbol=plus?'+':'-';
+    const ptSom=`${aWord.w} ${op} ${bWord.w} é...`;
+    // 3 wrong answers
+    const wrong=shuffle(allNums.filter(x=>x.n!==ans&&x.n>=0&&x.n<=20)).slice(0,3);
+    if(wrong.length<3)continue;
+    sommen.push({ptSom,ans:ansWord.w,ansN:ans,opts:shuffle([ansWord,...wrong]).map(x=>x.n)});
+  }
+  return sommen.slice(0,15);
+}
+function resetReken(){
+  rSoms=buildRekenSommen();rIdx=0;rSc=0;rTot=0;rAns=false;
+  document.getElementById('rs').textContent=0;
+  document.getElementById('rt').textContent=0;
+  document.getElementById('rn').style.display='none';
+  document.getElementById('rf').textContent='';
+  nextReken();
+}
+function nextReken(){
+  if(rIdx>=rSoms.length){
+    document.getElementById('r-som').textContent='Klaar! Score: '+rSc+'/'+rTot;
+    document.getElementById('r-pt-som').textContent='';
+    document.getElementById('ro').innerHTML='';
+    document.getElementById('rn').style.display='none';
+    return;
+  }
+  rAns=false;
+  const s=rSoms[rIdx];
+  document.getElementById('r-pt-som').textContent='';
+  document.getElementById('r-som').textContent=s.ptSom;
+  document.getElementById('r-fill').style.width=Math.round(rIdx/rSoms.length*100)+'%';
+  document.getElementById('rf').textContent='';
+  document.getElementById('rn').style.display='none';
+  const allNums=Object.values(D.nummers).flat();
+  document.getElementById('ro').innerHTML=s.opts.map(n=>{
+    const w=allNums.find(x=>x.n===n);
+    return `<button onclick="ansReken(this,${n},${s.ansN})">${n}<br><small style="font-size:11px;color:#888">${w?w.w:''}</small></button>`;
+  }).join('');
+  rIdx++;
+}
+function ansReken(btn,chosen,correct){
+  if(rAns)return;rAns=true;rTot++;
+  document.querySelectorAll('.reken-opts button').forEach(b=>{
+    b.disabled=true;
+    if(parseInt(b.getAttribute('onclick').match(/ansReken\(this,(\d+)/)[1])===correct)b.classList.add('ok');
+  });
+  if(chosen===correct){rSc++;btn.classList.add('ok');document.getElementById('rf').textContent='Muito bem!';}
+  else{btn.classList.add('no');document.getElementById('rf').textContent='Het is '+correct+'!';}
+  document.getElementById('rs').textContent=rSc;
+  document.getElementById('rt').textContent=rTot;
+  document.getElementById('rn').style.display='block';
+}
+
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');btn.classList.add('active');
+}
+
+// INIT
+fc(D.woorden,'w-grid');fc(D.handig,'hw-grid');
+fc(D.gostos.map(g=>({pt:g.v,nl:g.nl})),'gv-grid');
+fc(D.sporten,'sport-grid');
+fc(D.animais.map(a=>({pt:a.pt,nl:a.nl})),'animais-grid');
+fc(D.eten,'et-grid');fc(D.drinken,'drink-grid');
+fc(D.richtingen,'ri-grid');fc(D.maanden,'mn-grid');
+fc(fruitasWoorden,'frutas-fc');fc(D.maanden,'mnd-fc');
+buildVerbos();buildGostosDetail();buildBeberVar();buildCons();buildNums();
+buildKleuren();buildFruitTable();
+zinBlock(D.querer_z,'querer-z');
+zinBlock(D.beber_z,'beber-z');zinBlock(D.comer_z,'comer-z');
+zinBlock(D.nadar_z,'nadar-z');zinBlock(D.casos_z,'casos-z');
+zinBlock(D.data_z,'data-z');zinBlock(D.richtingen_z,'richt-z');
+zinBlock(D.maanden_z,'maanden-z');
+zinBlock(D.fruitkleur_z,'fruitkleur-z');zinBlock(D.fruitkleur2_z,'fruitkleur2-z');
+zinBlock(D.animais_z,'animais-z');
+zinBlock(D.fruitkleur2_z,'portdentro-z');
+allWords=getAllWords();renderWb(allWords);
+startFlash();resetQ();resetType();resetReken();
+</script>
+</body>
+</html>
